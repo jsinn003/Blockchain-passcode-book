@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reveal Passcode</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Reveal Passcode for Index {{ index }}</h1>
+    {% if error %}
+      <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form method="post">
+        <label for="view_key">Enter View Key:</label>
+        <input type="text" name="view_key" id="view_key" required>
+        <input type="submit" value="Reveal">
+    </form>
+    <a href="{{ url_for('view_passcodes') }}">Back to Passcodes</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Passcodes</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>View Passcodes</h1>
+    <ul>
+        {% for passcode in passcodes %}
+            <li>
+                Index {{ passcode.index }}: {{ passcode.display }}
+                {% if passcode.display != "Deleted" %}
+                    <a href="{{ url_for('reveal_passcode', index=passcode.index) }}">View</a>
+                    <form action="{{ url_for('delete_passcode', index=passcode.index) }}" method="post" style="display:inline;">
+                        <input type="submit" value="Delete">
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
+
